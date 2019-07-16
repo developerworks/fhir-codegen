@@ -10,6 +10,8 @@ You could change package name of generated classes in `gen.sh` file.
 This project is just generate classes with `xjc`, if you want to integrate it into maven workflow, 
 you could refer to bottom of the article: [Use JAXB to generate classes from FHIR XSD schema][4] 
 
+You could download the latest xml schema files from: http://build.fhir.org/downloads.html
+
 ## Reference Documentation
 
 
