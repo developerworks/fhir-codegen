@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Copyright (c) 2011+, HL7, Inc.
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, 
+  are permitted provided that the following conditions are met:
+  
+   * Redistributions of source code must retain the above copyright notice, this 
+     list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice, 
+     this list of conditions and the following disclaimer in the documentation 
+     and/or other materials provided with the distribution.
+   * Neither the name of HL7 nor the names of its contributors may be used to 
+     endorse or promote products derived from this software without specific 
+     prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  POSSIBILITY OF SUCH DAMAGE.
+  
+
+  Generated on Tue, Oct 30, 2018 08:22+1100 for FHIR v3.6.0 
+
+  Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
+  valid. Implementers will still need to be familiar with the content of the specification and with
+  any profiles that apply to the resources in order to make a conformant implementation.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.0">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="UserSession" type="UserSession">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Information about a user's current session.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="UserSession">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Information about a user's current session.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DomainResource">
+        <xs:sequence>
+          <xs:element name="identifier" minOccurs="0" maxOccurs="1" type="Identifier">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Allows a service to provide a unique, business identifier for the session.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="user" minOccurs="1" maxOccurs="1" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A practitioner, patient, device, or related person engaged in the session.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="status" type="UserSession.Status" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Status of the session.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="workstation" minOccurs="0" maxOccurs="1" type="Identifier">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Location that identifies the physical place at which the user's session is occurring. For the purposes of context synchronization, this is intended to represent the user's workstation.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="focus" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The current focus of the user's session. Common values are a reference to a Patient, Encounter, ImagingStudy, etc.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="created" minOccurs="0" maxOccurs="1" type="instant">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Indicates the timestamp when the user session was first created.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="expires" minOccurs="0" maxOccurs="1" type="instant">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Indicates the timestamp when the user session will expire (i.e. no longer be valid).</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="context" type="UserSession.Context" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Provides additional information associated with the context.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="UserSession.Status">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Information about a user's current session.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="code" minOccurs="1" maxOccurs="1" type="UserSessionStatus">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The current status of the user session.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="source" minOccurs="1" maxOccurs="1" type="UserSessionStatusSource">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The source of the status code.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="UserSession.Context">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Information about a user's current session.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="type" minOccurs="1" maxOccurs="1" type="string">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Indicates which type of context is being provided.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+                      <xs:element name="valueCodeableConcept" type="CodeableConcept" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">Provides the context value. (choose any one of value*, but only one)</xs:documentation>
+              </xs:annotation>
+             </xs:element>
+            <xs:element name="valueQuantity" type="Quantity" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">Provides the context value. (choose any one of value*, but only one)</xs:documentation>
+              </xs:annotation>
+             </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="UserSessionStatus-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="activating">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Activating</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="active">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Active</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="suspended">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Suspending</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="closing">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Closing</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="closed">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Closed</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="UserSessionStatus">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The status of the user session.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="UserSessionStatus-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="UserSessionStatusSource-list">
+    <xs:restriction base="code-primitive">
+      <xs:enumeration value="user">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">User</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="system">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">System</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="UserSessionStatusSource">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">The source of the status of the user session.</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="UserSessionStatusSource-list" use="optional"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

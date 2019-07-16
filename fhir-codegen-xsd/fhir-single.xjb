@@ -1,0 +1,31 @@
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               version="2.1">
+    <jaxb:bindings schemaLocation="fhir-single.xsd" version="1.0">
+
+        <!--
+        Fixes:-
+
+        org.xml.sax.SAXParseException; systemId: file:../xsd/fhir-single.xsd;
+        lineNumber: 81; columnNumber: 31; A class/interface with the same name
+        "org.adrianwalker.fhir.Code" is already in use. Use a class customization to
+        resolve this conflict.
+        -->
+        <jaxb:bindings node="//xs:complexType[@name='code']">
+            <jaxb:class name="CodeString"/>
+        </jaxb:bindings>
+
+        <!--
+        Fixes:-
+
+        org.xml.sax.SAXParseException; systemId: file:../xsd/fhir-single.xsd;
+        lineNumber: 1173; columnNumber: 34; A class/interface with the same name
+        "org.adrianwalker.fhir.Address" is already in use. Use a class customization
+        to resolve this conflict.
+        -->
+        <jaxb:bindings node="//xs:complexType[@name='Address']">
+            <jaxb:class name="PostalAddress"/>
+        </jaxb:bindings>
+
+    </jaxb:bindings>
+</jaxb:bindings>
