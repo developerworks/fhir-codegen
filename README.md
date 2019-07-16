@@ -1,8 +1,14 @@
 # Getting Started
 
-This project is a demo for how to generated java model classes from FHIR XML Schema.
+This project is a demo for how to generate java model classes from FHIR XML Schema.
 
-You could run `./gen.sh` from project root, it will generate the java model class in `generated` folder in the root of the project.
+You could run `./gen.sh` from project root, it will generate the java model classes in 
+`generated` folder in the root of the project.
+
+You could change package name of generated classes in `gen.sh` file.
+
+This project is just generate classes with `xjc`, if you want to integrate it into maven workflow, 
+you could refer to bottom of the article: [Use JAXB to generate classes from FHIR XSD schema][4] 
 
 ## Reference Documentation
 
